@@ -1,15 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ErrandRunner</title>
+    <style>
+      .view {
+        background: url("https://mdbootstrap.com/img/Photos/Others/img (50).jpg")no-repeat center center;
+        background-size: cover;
+    }
+    html,
+    body,
+    header,
+    .view {
+      height: 100%;
+    }
+    </style>
+    <title>Errand Runner</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
+      <a class="navbar-brand" href="#"><strong>Errand Runner</strong></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/new">New User</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  
+    <div class="view intro-2">
+      <div class="full-bg-img">
+        <div class="mask rgba-black-light flex-center">
+          <div class="container text-center white-text">
+            <div class="white-text text-center wow fadeInUp">
+              <!-- <h2>This Navbar is fixed</h2>
+              <h5>It will always stay visible on the top, even when you scroll down</h5>
+              <br>
+              <p>Full page intro with background image will be always displayed in full screen mode, regardless
+                of device </p> -->
+                <br><br><br><br><br>
+                <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
   </head>
 
   <body>
-    <%= yield %>
+       <!-- <ul class="nav nav-tabs">
+          <li class="nav-item">
+              <div class="p-3 border bg-light"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Errand Runner</a>
+          </li>
+          <li class="nav-item">
+              <div class="p-3 border bg-light"><a class="nav-link" href="/">All Errands</a></div>
+          </li>
+          <li class="nav-item">
+              <div class="p-3 border bg-light"><a class="nav-link" href="/login">Login</a></div>
+          </li>
+          <li class="nav-item">
+              <div class="p-3 border bg-light"><a class="nav-link" href="/users/new">Create User Account</a></div>
+          </li>
+          <li class="nav-item">
+              <div class="p-3 border bg-light"><a class="nav-link" href="#">About Us</a></div>
+            </li>
+      </ul>   -->
+    <!-- <%= yield %> -->
   </body>
 </html>

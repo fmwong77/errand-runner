@@ -1,6 +1,8 @@
 class ErrandsController < ApplicationController
     # before_action :
-    def index
+	def index
+		@errands = Errand.all
+		# redirect_to errands_path
 	end
 
 	def show

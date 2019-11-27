@@ -1,10 +1,15 @@
 class UsersController < ApplicationController
     before_action :find_by_id, only: [:show, :update]
     
-    def index
+	def index
+		# byebug
+		if authenticated
+			redirect_to @user
+		end
 	end
 
 	def show
+		
 	end
 
 	def new
@@ -27,5 +32,14 @@ class UsersController < ApplicationController
     
     def find_by_id
         @user = User.find(params[:id])
-    end
+	end
+	
+	def authenticated
+		@user = User.find_by(user_name: params[:user_name])
+		if @user.password == params[:password]
+			true
+		else
+			false
+		end
+	end
 end
