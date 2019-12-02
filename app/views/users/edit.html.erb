@@ -1,1 +1,14 @@
-<h1>Edit User Profile</h1> 
+
+<h1>Edit My Profile</h1>
+<%= form_with model: @user do |f| %>
+<%= f.label :first_name %>
+<%= f.text_field :first_name %><br>
+<%= f.label :last_name %>
+<%= f.text_field :last_name %><br>
+<%= f.label :password %>
+<%= f.password_field :password %><br>
+<%= f.label "Confirm Password" %>
+<%= f.password_field :password %><br>
+<%= f.submit%>
+<% end %>
+
