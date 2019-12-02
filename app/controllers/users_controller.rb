@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
-    before_action :find_by_id, only: [:show, :update]
+    before_action :find_by_id, only: [:show, :edit, :update]
     
 	def index
-		# byebug
 		if authenticated
 			redirect_to @user
 		end
@@ -19,9 +18,17 @@ class UsersController < ApplicationController
 	end
 
 	def edit
+
 	end
 
 	def update
+		@user.update(post_params(:first_name, :last_name, :password))
+		if @user.valid?
+			@user.save
+			redirect_to @user
+		else
+			render :edit
+		end
 	end
 
 	private
@@ -36,8 +43,12 @@ class UsersController < ApplicationController
 	
 	def authenticated
 		@user = User.find_by(user_name: params[:user_name])
-		if @user.password == params[:password]
-			true
+		if @user
+			if @user.password == params[:password]
+				true
+			else
+				false
+			end
 		else
 			false
 		end
