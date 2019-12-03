@@ -1,4 +1,5 @@
 class ErrandsController < ApplicationController
+
 	before_action :find_by_id, only: [:edit]
 	before_action :find_by_id_for_pickup, only: [:editpickup]
 	
@@ -16,7 +17,8 @@ class ErrandsController < ApplicationController
 		end
 	end
 
-	def show
+  def show
+    
 	end
 
   def new
@@ -62,5 +64,9 @@ class ErrandsController < ApplicationController
 
 	def post_params(*args)
 		params.require(:errand).permit(args)
-	end
+  end
+  
+  def find_by_id
+    @errand = Errand.find(params[:id])
+  end
 end

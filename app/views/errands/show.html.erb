@@ -1,1 +1,11 @@
-<h1>show errands</h1>
+  <div>
+   <p>Created By: <%= @errand.user.first_name %> <%= @errand.user.last_name %></p>
+   <p>Description: <%= @errand.description %></p>
+   <p>Due Date: <%= @errand.due_date %></p>
+  </div>
+
+  <div>
+   <%= link_to 'Edit Errand', edit_errand_path  %>
+  </div>
+
+   

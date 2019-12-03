@@ -1,1 +1,20 @@
-<h1>Edit errands</h1>
+<h1>Edit Errand!</h1>
+ 
+ <% if @errand.errors.any? %>
+     <ul>
+       <% @errand.errors.full_messages.each do |msg| %>
+       <li><%= msg %></li>
+       <% end %>
+     </ul>
+ <% end %>
+ 
+ <%= form_with model: @errand do |f| %>
+ <%= f.label             :category_id %>
+ <%= f.collection_select :category_id, Category.all, :id, :category, prompt:true %>
+ <%= f.label             :description %>
+ <%= f.text_area         :description %>
+ <%= f.label             :date_of_errand %>
+ <%= f.text_field :date_of_errand, data:{ provide:'datepicker' }, placeholder: "MM/DD/YYYY" %>
+ <%= f.submit %><br>
+
+   <% end %>
