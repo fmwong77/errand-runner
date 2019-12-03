@@ -1,5 +1,5 @@
 class ErrandsController < ApplicationController
-    # before_action :
+    before_action :find_by_id, only: [:show, :edit, :update]
 	def index
 		# byebug
 		case params[:format].to_i
@@ -12,7 +12,8 @@ class ErrandsController < ApplicationController
 		end
 	end
 
-	def show
+  def show
+    
 	end
 
   def new
@@ -34,5 +35,9 @@ class ErrandsController < ApplicationController
 
 	def post_params(*args)
 		params.require(:errand).permit(args)
-	end
+  end
+  
+  def find_by_id
+    @errand = Errand.find(params[:id])
+  end
 end

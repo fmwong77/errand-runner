@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :find_by_id, only: [:show, :edit, :update]
+    before_action :find_by_id, only: [:show, :edit, :update, :full_name]
     
 	def index
 		if authenticated
@@ -45,12 +45,16 @@ class UsersController < ApplicationController
 	def logout
 		reset_session
 		redirect_to '/'
-	end
+  end
+  
+  def full_name
+    @user.first_name + @user.last_name
+  end
 
 	private
 	
 	def allowed_params
-		params.require(:user).permit(:user_name, :password, :first_name, :last_name)
+		params.require(:user).permit(:user_name, :password, :first_name, :last_name, :full_name)
 	end
 
 	def post_params(*args)

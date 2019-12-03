@@ -13,7 +13,13 @@
         <% @errands.each do |errand| %>
       <tr>
         <td><%= errand.category.category %></td>
+        <% if params[:format].to_i == 0 %>
+        <td><%= link_to errand.description, errand_pickup_path(errand) %></td>
+        <% elsif params[:format].to_i == 1 %>
+        <td><%= link_to errand.description, edit_errand_path(errand) %></td>
+        <% elsif params[:format].to_i == 2 %>
         <td><%= link_to errand.description, errand %></td>
+        <% end %>
         <td><%= errand.user.first_name %> <%= errand.user.last_name %></td>
       </tr>
       <% end %>
