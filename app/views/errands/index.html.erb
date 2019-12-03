@@ -1,4 +1,10 @@
-<h1>Pick up an Errands</h1>
+<h1><% if params[:format].to_i == 0 %>
+  Pick up an Errands
+  <% elsif params[:format].to_i == 1 %>
+  My Errands
+  <% elsif params[:format].to_i == 2 %>
+  Ran Errands
+  <% end %></h1>
 
 <table class="table">
     <thead class="black white-text">

@@ -73,12 +73,9 @@ class UsersController < ApplicationController
 				session[:current_user] = @user.first_name
 				true
 			else
-				# @user.errors.add("Invalid username or password")
 				false
 			end
 		else
-			# @user = User.new
-			# @user.errors.add("Invalid username or password")
 			false
 		end
 	end
