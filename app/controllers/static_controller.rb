@@ -1,5 +1,5 @@
 class StaticController < ApplicationController
     def login
-        # redirect_to 'login.html.erb'
+        @user = User.new
     end
 end
