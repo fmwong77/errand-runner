@@ -1,1 +1,24 @@
-<h1>Create Errand</h1>
+<h1>Create An Errand!</h1>
+
+<% if @errand.errors.any?  %>
+      <ul>
+        <% @errand.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= form_with model: @errand do |f| %>
+      <p><%= f.label             :category_id %></p>
+         <%= f.collection_select :category_id, Category.all, :id, :category, prompt:true %>
+      <p><%= f.label             :description %></p>
+         <%= f.text_area         :description %>
+      <p><%= f.label             :due_date %></p>
+         <%= f.password_field    :due_date %>
+     <p> <%= f.label             "Confirm Password" %></p>
+         <%= f.password_field    :password %><br><br>
+
+<input type="text" data-provide='datepicker' >
+         
+         <%= f.submit %><br>
+  <% end %>

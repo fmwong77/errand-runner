@@ -10,12 +10,13 @@
 # Category.destroy_all
 
 # User.create(user_name: "fmwong", password: "1234", first_name: "Mei", last_name: "Wong")
-User.create(user_name: "buford", password: "1234", first_name: "Buford", last_name: "Eeds")
+# User.create(user_name: "buford", password: "1234", first_name: "Buford", last_name: "Eeds")
 
-c1 = Category.create(category: 'service', credit: 25)
-c2 = Category.create(category: 'handy man', credit: 75)
-c3 = Category.create(category: 'moving help', credit: 100)
-c4 = Category.create(category: 'grocery shopping', credit: 50)
+
+c1 = Category.create(category: 'Service', credit: 25)
+c2 = Category.create(category: 'Handy Man', credit: 75)
+c3 = Category.create(category: 'Moving Help', credit: 100)
+c4 = Category.create(category: 'Grocery Shopping', credit: 50)
 
 e1 = Errand.create(category_id: 1, user_id: 1, description: "Delivery service")
 e2 = Errand.create(category_id: 2, user_id: 1, description: "Fix my plumbing")
@@ -26,3 +27,4 @@ e6 = Errand.create(category_id: 1, user_id: 1, description: "Grocerries pickup")
 e7 = Errand.create(category_id: 2, user_id: 1, description: "Organize closet")
 e8 = Errand.create(category_id: 2, user_id: 1, description: "Mounting")
 e9 = Errand.create(category_id: 2, user_id: 1, description: "Rearrange furniture")
+
