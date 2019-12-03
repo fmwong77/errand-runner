@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   # post '/errands/pickup', to: 'errands#pickup'
 
   resources :users
-  resources :errands, only: [:index, :show, :new, :create, :update, :destroy, :edit]
+  resources :errands
   root to: 'static#welcome'
 end
+
+# , only: [:index, :show, :new, :create, :update, :destroy, :edit]

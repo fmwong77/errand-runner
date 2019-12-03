@@ -35,8 +35,8 @@ class UsersController < ApplicationController
 	def update
 		@user.update(post_params(:first_name, :last_name, :password))
 		if @user.valid?
-			@user.save
-			redirect_to @user
+       @user.save
+       logout
 		else
 			render :edit
 		end
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 	private
 	
 	def allowed_params
-		params.require(:user).permit(:user_name, :password, :first_name, :last_name, :full_name)
+		params.require(:user).permit(:user_name, :password, :password_confirmation, :first_name, :last_name, :full_name)
 	end
 
 	def post_params(*args)
