@@ -1,1 +1,2 @@
-//= require bootstrap-datepicker
+// Data Picker Initialization
+$('.datepicker').pickadate();
