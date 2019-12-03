@@ -1,1 +1,22 @@
-<h1>All Errands</h1>
+<h1>Pick up an Errands</h1>
+
+<table class="table">
+    <thead class="black white-text">
+      <tr>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">Created by</th>
+      </tr>
+    </thead>
+    <tbody>
+        <% if @errands %>
+        <% @errands.each do |errand| %>
+      <tr>
+        <td><%= errand.category.category %></td>
+        <td><%= link_to errand.description, errand %></td>
+        <td><%= errand.user.first_name %> <%= errand.user.last_name %></td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>

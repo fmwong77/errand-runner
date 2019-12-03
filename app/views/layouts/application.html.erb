@@ -22,7 +22,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
-      <a class="navbar-brand" href="#"><strong>Errand Runner</strong></a>
+      <a class="navbar-brand" href="/"><strong>Errand Runner</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -30,14 +30,27 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            <% if session[:current_user_id] %>
+            <a class="nav-link" href="/errands">Home <span class="sr-only">(current)</span></a>
+            <% else %>
+            <a class="nav-link" href="/login">Home <span class="sr-only">(current)</span></a>
+            <% end %>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/users/new">New User</a>
           </li>
           <li class="nav-item">
+              <% if session[:current_user_id] %>
+            <a class="nav-link" href="/logout">Logout </a>
+            <% else %>
             <a class="nav-link" href="/login">Login</a>
+            <% end %>
           </li>
+          <% if session[:current_user_id] %>
+          <li class="nav-item">
+              <a class="nav-link" href="/users/<%= session[:current_user_id]%>"><%= session[:current_user] %></a>
+            </li>
+            <% end %>
         </ul>
       </div>
     </nav>
@@ -63,23 +76,6 @@
   </head>
 
   <body>
-       <!-- <ul class="nav nav-tabs">
-          <li class="nav-item">
-              <div class="p-3 border bg-light"><a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Errand Runner</a>
-          </li>
-          <li class="nav-item">
-              <div class="p-3 border bg-light"><a class="nav-link" href="/">All Errands</a></div>
-          </li>
-          <li class="nav-item">
-              <div class="p-3 border bg-light"><a class="nav-link" href="/login">Login</a></div>
-          </li>
-          <li class="nav-item">
-              <div class="p-3 border bg-light"><a class="nav-link" href="/users/new">Create User Account</a></div>
-          </li>
-          <li class="nav-item">
-              <div class="p-3 border bg-light"><a class="nav-link" href="#">About Us</a></div>
-            </li>
-      </ul>   -->
-    <!-- <%= yield %> -->
+       
   </body>
 </html>
