@@ -4,24 +4,28 @@ class UsersController < ApplicationController
 	def index
 		if authenticated
 			redirect_to @user
+		else
+			# @user.errors.any?
+			# byebug
+			render :login
 		end
 	end
 
 	def show
 	end
 
-  def new
-    @user = User.new
+  	def new
+    	@user = User.new
 	end
 
-  def create
-    @user = User.new(allowed_params)
-    if @user.valid?
-       @user.save
-       redirect_to '/login'
-    else
-      render :new
-    end
+	def create
+		@user = User.new(allowed_params)
+		if @user.valid?
+			@user.save
+			redirect_to '/login'
+		else
+			render :new
+		end
 	end
 
 	def edit
@@ -38,11 +42,16 @@ class UsersController < ApplicationController
 		end
 	end
 
-  private
-  
-  def allowed_params
-    params.require(:user).permit(:user_name, :password, :first_name, :last_name)
-  end
+	def logout
+		reset_session
+		redirect_to '/'
+	end
+
+	private
+	
+	def allowed_params
+		params.require(:user).permit(:user_name, :password, :first_name, :last_name)
+	end
 
 	def post_params(*args)
 		params.require(:user).permit(args)
@@ -56,11 +65,16 @@ class UsersController < ApplicationController
 		@user = User.find_by(user_name: params[:user_name])
 		if @user
 			if @user.password == params[:password]
+				session[:current_user_id] = @user.id
+				session[:current_user] = @user.first_name
 				true
 			else
+				# @user.errors.add("Invalid username or password")
 				false
 			end
 		else
+			# @user = User.new
+			# @user.errors.add("Invalid username or password")
 			false
 		end
 	end

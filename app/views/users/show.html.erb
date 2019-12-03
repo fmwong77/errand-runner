@@ -1,6 +1,6 @@
 
 <h1>Welcome back, <%= @user.first_name%>!</h1>
-<div><h3><%= link_to 'All Errands', errands_path %></h3></div>
-<div><h3><%= link_to 'My Errands', errands_path %></h3></div>
-<div><h3><%= link_to 'Ran Errands', errands_path %></h3></div>
+<div><h3><%= link_to 'Pick up Errands', errands_path(0) %></h3></div>
+<div><h3><%= link_to 'My Errands', errands_path(1) %></h3></div>
+<div><h3><%= link_to 'Ran Errands', errands_path(2) %></h3></div>
 <div><h3><%= link_to "Edit My Profile", edit_user_path(@user) %></h3></div>
