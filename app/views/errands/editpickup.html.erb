@@ -1,4 +1,4 @@
-<h1>Pick-up errand</h1>
+<h1>Run An Errand</h1>
 <% if @errand %>
         <% @errand.each do |errand| %>
             Category: <%= errand.category.category %><br>
@@ -6,7 +6,7 @@
             Due date: <%= errand.due_date %>
             Created by: <%= errand.user.first_name %> <%= errand.user.last_name %><br>
             <%= form_with model: errand, url:errand_pickup_path do |f| %>
-            <%= f.submit "Pick up" %>
+            <%= f.submit "Run errand" %>
             <% end %>
         <% end %>
 <% end %>

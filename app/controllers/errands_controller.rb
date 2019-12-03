@@ -27,6 +27,7 @@ class ErrandsController < ApplicationController
 
   def create
     @errand = Errand.new(:category_id, :user_id, :runner_user_id, :description, :due_date)
+    @errand.save
     redirect_to errands_path
 	end
 
@@ -64,9 +65,5 @@ class ErrandsController < ApplicationController
 
 	def post_params(*args)
 		params.require(:errand).permit(args)
-  end
-  
-  def find_by_id
-    @errand = Errand.find(params[:id])
   end
 end
