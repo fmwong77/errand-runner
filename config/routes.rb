@@ -4,6 +4,14 @@ Rails.application.routes.draw do
   get 'logout', to: 'users#logout'
   post 'login', to: 'users#index'
 
+  resources :errands do
+    get '/pickup', to: 'errands#editpickup'
+    patch '/pickup', to: 'errands#pickup'
+  end
+
+  # get '/errands/pickup', to: 'errands#edit'
+  # post '/errands/pickup', to: 'errands#pickup'
+
   resources :users
   resources :errands, only: [:index, :show, :new, :create, :update, :destroy, :edit]
   root to: 'static#welcome'
