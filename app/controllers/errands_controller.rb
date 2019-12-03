@@ -24,9 +24,10 @@ class ErrandsController < ApplicationController
     	@errand = Errand.new
 	end
 
-  	def create
-		@errand = Errand.new(:category_id, :user_id, :runner_user_id, :description, :due_date)
-		redirect_to errands_path
+  def create
+    @errand = Errand.new(:category_id, :user_id, :runner_user_id, :description, :due_date)
+    @errand.save
+    redirect_to errands_path
 	end
 
 	def edit
@@ -65,5 +66,6 @@ class ErrandsController < ApplicationController
 
 	def post_params(*args)
 		params.require(:errand).permit(args)
-  	end
+
+  end
 end
