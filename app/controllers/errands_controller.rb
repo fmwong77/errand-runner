@@ -8,10 +8,13 @@ class ErrandsController < ApplicationController
 	def show
 	end
 
-	def new
+  def new
+    @errand = Errand.new
 	end
 
-	def create
+  def create
+    @errand = Errand.new(:category_id, :user_id, :runner_user_id, :description, :due_date)
+    redirect_to errands_path
 	end
 
 	def edit

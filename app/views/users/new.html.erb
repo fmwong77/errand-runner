@@ -9,14 +9,16 @@
     <% end %>
 
 <%= form_with model: @user, url:users_path do |f| %>
-      <p><%= f.label :first_name %></p>
-      <%= f.text_field :first_name %>
-      <p><%= f.label :last_name %></p>
-      <%= f.text_field :last_name %>
-      <p><%= f.label :user_name %></p>
-      <%= f.text_field :user_name %>
-      <p><%= f.label :password %></p>
-      <%= f.password_field :password %><br><br>
-    <%= f.submit %><br>
+      <p><%= f.label          :first_name %></p>
+         <%= f.text_field     :first_name %>
+      <p><%= f.label          :last_name %></p>
+         <%= f.text_field     :last_name %>
+      <p><%= f.label          :user_name %></p>
+         <%= f.text_field     :user_name %>
+      <p><%= f.label          :password %></p>
+         <%= f.password_field :password %>
+     <p> <%= f.label          "Confirm Password" %></p>
+         <%= f.password_field :password %><br><br>
+         <%= f.submit %><br>
   <% end %>
 
