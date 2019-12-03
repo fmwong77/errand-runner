@@ -4,25 +4,24 @@ class ErrandsController < ApplicationController
 	before_action :find_by_id_for_pickup, only: [:editpickup]
 	
 	def index
-		# byebug
 		case params[:format].to_i
 		when 0
-			@errands = Errand.where("user_id <> #{session[:current_user_id]} and runner_user_id isnull").joins(:category, :user).select('errands.*, categories.category, users.*')
+			@errands = Errand.where("user_id <> #{session[:current_user_id]} and runner_user_id isnull")#.joins(:category, :user).select('errands.*, categories.category, users.*')
 		when 1
-			@errands = Errand.where("user_id = #{session[:current_user_id]}").joins(:category, :user).select('errands.*, categories.category, users.*')
+			@errands = Errand.where("user_id = #{session[:current_user_id]}")#.joins(:category, :user)#.select('errands.*, categories.category, users.*')
 		when 2
-			@errands = Errand.where("runner_user_id = #{session[:current_user_id]}").joins(:category, :user).select('errands.*, categories.category, users.*')
+			@errands = Errand.where("runner_user_id = #{session[:current_user_id]}")#.joins(:category, :user).select('errands.*, categories.category, users.first_name, users.last_name')
 		else
-			@errands = Errand.where("user_id <> #{session[:current_user_id]} and runner_user_id isnull").joins(:category, :user).select('errands.*, categories.category, users.*')
+			@errands = Errand.where("user_id <> #{session[:current_user_id]} and runner_user_id isnull")#.joins(:category, :user).select('errands.*, categories.category, users.first_name, users.last_name')
 		end
 	end
 
-  def show
+  	def show
     
 	end
 
-  def new
-    @errand = Errand.new
+  	def new
+    	@errand = Errand.new
 	end
 
   def create
@@ -38,15 +37,17 @@ class ErrandsController < ApplicationController
 	def editpickup
 	end
 
+	def destroy
+		@errand = Errand.find(params[:id])
+		@errand.destroy
+		redirect_to '/errands.1'
+	end
+
 	def pickup
-		# byebug
 		@errand = Errand.find(params[:errand_id])
 		@errand.runner_user_id = session[:current_user_id]
-		# @errand.update(post_params(:runner_user_id))
-		# byebug
 		@errand.save
 		if @errand.valid?
-			# byebug
 			redirect_to '/errands'
 		else
 			render :edit
@@ -65,5 +66,6 @@ class ErrandsController < ApplicationController
 
 	def post_params(*args)
 		params.require(:errand).permit(args)
+
   end
 end

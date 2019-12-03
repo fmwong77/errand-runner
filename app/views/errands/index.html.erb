@@ -12,6 +12,7 @@
         <th scope="col">Category</th>
         <th scope="col">Description</th>
         <th scope="col">Created by</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -19,14 +20,18 @@
         <% @errands.each do |errand| %>
       <tr>
         <td><%= errand.category.category %></td>
-        <% if params[:format].to_i == 0 %>
-        <td><%= link_to errand.description, errand_pickup_path(errand) %></td>
-        <% elsif params[:format].to_i == 1 %>
-        <td><%= link_to errand.description, edit_errand_path(errand) %></td>
-        <% elsif params[:format].to_i == 2 %>
-        <td><%= link_to errand.description, errand %></td>
-        <% end %>
+        <td><%= errand.description %></td>
         <td><%= errand.user.first_name %> <%= errand.user.last_name %></td>
+
+
+
+        <% if params[:format].to_i == 0 %>
+        <td><%= link_to "Pick up", errand_pickup_path(errand) %></td>
+        <% elsif params[:format].to_i == 1 %>
+        <td><%= link_to "Edit", edit_errand_path(errand) %> / <%= link_to "Delete", errand, method: :delete, data: { confirm: "Are you sure to delete this errand?" } %>
+        <% elsif params[:format].to_i == 2 %>
+        <td><%= link_to "View", errand %></td>
+        <% end %>
       </tr>
       <% end %>
       <% end %>
