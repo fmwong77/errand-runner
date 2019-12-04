@@ -13,6 +13,7 @@
         <th scope="col">Description</th>
         <th scope="col">Due Date</th>
         <th scope="col">Created by</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -25,7 +26,11 @@
         <td><%= errand.due_date %></td>
         <td><%= errand.user.first_name %> <%= errand.user.last_name %></td>
 
-
+        <% if errand.runner_user_id %>
+        <td>Completed</td>
+        <% else %>
+        <td>Pending</td>
+        <% end %>
 
         <% if params[:format].to_i == 0 %>
         <td><%= link_to "Pick up", errand_pickup_path(errand) %></td>

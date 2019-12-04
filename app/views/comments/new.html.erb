@@ -1,6 +1,7 @@
 <%= flash[:error] %>
 <%= form_for [@errand, @comment], class: :"text-center border border-light p-5" do |f| %>
 <p class="h4 mb-4">New Comment</p>
+<p>This errand was completed by: <%= @user.first_name%> <%= @user.last_name%></p>
          <%= f.text_area     :content, class: :"form-control mb-4", placeholder: :"Comment" %>
          <%= f.text_field     :rating, class: :"form-control mb-4", placeholder: :"Rating" %>
          <%= f.submit "Comment", :class => 'btn btn-info btn-block my-4' %><br>

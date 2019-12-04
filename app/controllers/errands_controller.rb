@@ -33,26 +33,27 @@ class ErrandsController < ApplicationController
   def create
     @errand = Errand.new(post_params(:category_id, :user_id, :description, :due_date))
     @errand.user_id = session[:current_user_id]
-    # byebug
     if @errand.valid?
        @errand.save
        redirect_to '/errands.1'
     else
-      puts "oops!"
+	  flash[:error] = @errand.errors.full_messages
       render :new
     end
-	end
+end
 
 	def edit
 		
   end
   
   def update
+	# byebug
 		@errand.update(post_params(:category_id, :description, :due_date))
 		if @errand.valid?
 			 @errand.save
 			 redirect_to '/errands.1'
 		else
+			flash[:error] = @errand.errors.full_messages
 			render :edit
 		end
 	end

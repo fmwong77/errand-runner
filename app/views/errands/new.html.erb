@@ -1,60 +1,11 @@
-<head>
 
-<%# <script>
-$('.datepicker').pickadate({
-onStart: function() {
-console.log('Hello there :)')
-},
-onRender: function() {
-console.log('Whoa.. rendered anew')
-},
-onOpen: function() {
-console.log('Opened up')
-},
-onClose: function() {
-console.log('Closed now')
-},
-onStop: function() {
-console.log('See ya.')
-},
-onSet: function(context) {
-console.log('Just set stuff:', context)
-}
-})
-</script> %>
-
- <h1>Create An Errand!</h1>
- 
- <% if @errand.errors.any? %>
-     <ul>
-       <% @errand.errors.full_messages.each do |msg| %>
-       <li><%= msg %></li>
-       <% end %>
-     </ul>
- <% end %>
- 
-     <%= form_with model: @errand do |f| %>
-     <%= f.label             :category_id %>
-     <%= f.collection_select :category_id, Category.all, :id, :category, prompt:true %>
-     <%= f.label             :description %>
-     <%= f.text_area         :description %>
-     <%= f.label             :due_date, 'Date of errand' %>
-     <%= f.text_field :due_date, placeholder: "MM/DD/YYYY" %>
-     <%= f.submit %><br>
-
-   <% end %>
+<%= flash[:error] %>
+   <%= form_with model: @errand, class: :"text-center border border-light p-5" do |f| %>
+<p class="h4 mb-4">Create an Errand!</p>
+<%= f.collection_select :category_id, Category.all, :id, :category, {prompt: "Select a category"}, {class: "form-control mb-4"} %>
+<%= f.text_area         :description, class: :"form-control mb-4", placeholder: :"Description" %>
+<%= f.text_field :due_date, class: :"form-control mb-4", placeholder: "MM/DD/YYYY" %>
+<%= f.submit "Create Errand", :class => 'btn btn-info btn-block my-4'  %><br>
+  <% end %>
           
-</head>
-      
-
-     
-
-<%# pop up calander attempt %>
-
-<%# <div> class="md-form">
-        <input placeholder="Selected date" type="text" id="myPicker" class="form-control datepicker">
-          <label for="myPicker">Try me...</label>
-          <button class="picker-opener btn btn-primary btn-sm" data-open="myPicker">Open</button>
-      </div> %>
-
 
