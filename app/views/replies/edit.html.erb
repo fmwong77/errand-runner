@@ -1,0 +1,10 @@
+<%= flash[:error] %>
+ 
+ <%= form_with model: @errand, class: :"text-center border border-light p-5" do |f| %>
+ <p class="h4 mb-4">Edit Errand</p>
+ <%= f.collection_select :category_id, Category.all, :id, :category, {prompt: "Select a category"}, {class: "form-control mb-4"} %>
+ <%= f.text_area         :description, class: :"form-control mb-4", placeholder: :"Description" %>
+ <%= f.text_field :date_of_errand, class: :"form-control mb-4", placeholder: :"MM/DD/YYYY" %>
+ <%= f.submit "Update", :class => 'btn btn-info btn-block my-4' %><br>
+
+   <% end %>

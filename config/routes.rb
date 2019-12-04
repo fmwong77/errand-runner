@@ -7,10 +7,17 @@ Rails.application.routes.draw do
   resources :errands do
     get '/pickup', to: 'errands#editpickup'
     patch '/pickup', to: 'errands#pickup'
+
+    resources :comments
+    # get 'comments/new', to: 'comments#new'
+    # post 'comments/new', to: 'comments#create'
   end
 
   # get '/errands/pickup', to: 'errands#edit'
   # post '/errands/pickup', to: 'errands#pickup'
+
+  # resources :comments, only: [:new, :create, :update, :edit]
+  # resources :replies, only: [:new, :create, :update, :edit]
 
   resources :users
   resources :errands
