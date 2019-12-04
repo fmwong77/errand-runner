@@ -18,9 +18,12 @@ class ErrandsController < ApplicationController
 	end
 
 	  def show
-		# byebug
+		
     @comment = Comment.find_by("errand_id = #{params[:id]}")
-    @replies = Reply.all.where("comment_id = #{@comment.id}")
+    if @comment
+      @replies = Reply.all.where("comment_id = #{@comment.id}")
+    end
+    
 	end
 
   	def new
