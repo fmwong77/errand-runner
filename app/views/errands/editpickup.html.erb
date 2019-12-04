@@ -2,13 +2,13 @@
 
         <% @errand.each do |errand| %>
         <%= form_with model: errand, url:errand_pickup_path, class: :"text-center border border-light p-5" do |f| %>
-        <p class="h4 mb-4">Run An Errand</p>
+        <p class="h4 mb-4">Errand Details</p>
         Category: <%= errand.category.category %><br>
             Description: <%= errand.description %><br>
             Due date: <%= errand.due_date %><br>
             Created by: <%= errand.user.first_name %> <%= errand.user.last_name %><br>
             Credit: <%= errand.category.credit %><br>
-            <%= f.submit "Run Errand", :class => 'btn btn-info btn-block my-4' %>
+            <%= f.submit "Run Errand", :class => 'btn btn-primary btn-block my-4' %>
             <% end %>
         <% end %>
 <% end %>
