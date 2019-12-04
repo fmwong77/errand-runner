@@ -13,8 +13,8 @@
  <%= f.collection_select :category_id, Category.all, :id, :category, prompt:true %>
  <%= f.label             :description %>
  <%= f.text_area         :description %>
- <%= f.label             :date_of_errand %>
- <%= f.text_field :date_of_errand, data:{ provide:'datepicker' }, placeholder: "MM/DD/YYYY" %>
+ <%= f.label             :due_date %>
+ <%= f.text_field :due_date, placeholder: "MM/DD/YYYY" %>
  <%= f.submit %><br>
 
    <% end %>

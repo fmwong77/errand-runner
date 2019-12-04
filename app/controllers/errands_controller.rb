@@ -42,10 +42,10 @@ class ErrandsController < ApplicationController
   end
   
   def update
-		@errand.update(post_params(:category_id, :description, :date_of_errand))
+		@errand.update(post_params(:category_id, :description, :due_date))
 		if @errand.valid?
 			 @errand.save
-			 redirect_to @errand
+			 redirect_to '/errands.1'
 		else
 			render :edit
 		end
