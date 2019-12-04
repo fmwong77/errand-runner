@@ -1,14 +1,12 @@
   <div class="text-center border border-light p-5">
-   <p>Created By: <%= @errand.user.first_name %> <%= @errand.user.last_name %></p>
-   <p>Description: <%= @errand.description %></p>
-   <p>Due Date: <%= @errand.due_date %></p>
-   <p>Credit: <%= @errand.category.credit %></p>
+   Created By: <%= @errand.user.first_name %> <%= @errand.user.last_name %><br>
+   Description: <%= @errand.description %><br>
+   Due Date: <%= @errand.due_date %><br>
+   Credit: <%= @errand.category.credit %>
   </div>
    
-  <% if @comment%>
-  <div class="text-center border border-light p-5">
+  <% if @comment %>
     <p>Comment: <%= @comment.content %></p>
     <p>Rating: <%= @comment.rating %></p>
-    <p><%= link_to "View Replies", replies_path(@comment) %></p>
-  </div>
+    <%= link_to "Reply", :class => 'btn btn-info btn-block my-4' %>
   <% end %>
