@@ -1,16 +1,14 @@
-<h1>Login</h1>
-    <!-- <% if @user.errors.any?  %>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %> -->
-
-    <%= form_with url: "login" do |f| %>
-    <%= f.label :user_name %>
-    <%= f.text_field :user_name %><br>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.submit "Login", :class => 'btn btn-primary' %>
+<%= flash[:error] %>
+<!-- Default form login -->
+    <%= form_with url: "login", class: :"text-center border border-light p-5" do |f| %>
+    <p class="h4 mb-4">Sign in</p>
+    
+    <%= f.text_field :user_name, class: :"form-control mb-4", placeholder: :"Username" %>
+    <%= f.password_field :password, class: :"form-control mb-4", placeholder: :"Password" %>
+    <%= f.submit "Login", :class => 'btn btn-info btn-block my-4' %>
+      <!-- Register -->
+  <p>Not a member?
+    <a href="/users/new">Register</a>
+  </p>
 <% end %>
+<!-- Default form login -->

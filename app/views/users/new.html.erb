@@ -1,23 +1,10 @@
-<h1>Create An Account</h1><br>
-
-<% if @user.errors.any?  %>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
-    <% end %>
-
-<%= form_with model: @user, url:users_path do |f| %>
-      <p><%= f.label          :first_name %></p>
-         <%= f.text_field     :first_name %>
-      <p><%= f.label          :last_name %></p>
-         <%= f.text_field     :last_name %>
-      <p><%= f.label          :user_name %></p>
-         <%= f.text_field     :user_name %>
-      <p><%= f.label          :password %></p>
-         <%= f.password_field :password %>
-     <p> <%= f.label          "Confirm Password" %></p>
-         <%= f.password_field :password %><br><br>
-         <%= f.submit %><br>
+<%= flash[:error] %>
+<%= form_with model: @user, class: :"text-center border border-light p-5" do |f| %>
+<p class="h4 mb-4">Register</p>
+         <%= f.text_field     :first_name, class: :"form-control mb-4", placeholder: :"First Name" %>
+         <%= f.text_field     :last_name, class: :"form-control mb-4", placeholder: :"Last Name" %>
+         <%= f.text_field     :user_name, class: :"form-control mb-4", placeholder: :"User Name" %>
+         <%= f.password_field :password, class: :"form-control mb-4", placeholder: :"Password" %>
+         <%= f.password_field :password, class: :"form-control mb-4", placeholder: :"Confirm Password" %>
+         <%= f.submit "Register", :class => 'btn btn-info btn-block my-4' %><br>
   <% end %>

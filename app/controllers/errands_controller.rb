@@ -1,6 +1,7 @@
 class ErrandsController < ApplicationController
 
-	before_action :find_by_id, only: [:show, :edit, :update,]
+
+	before_action :find_by_id, only: [:show, :edit, :update]
 	before_action :find_by_id_for_pickup, only: [:editpickup]
 	
 	def index
@@ -17,7 +18,7 @@ class ErrandsController < ApplicationController
 	end
 
   	def show
-    
+		
 	end
 
   	def new
