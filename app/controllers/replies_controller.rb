@@ -8,12 +8,13 @@ class RepliesController < ApplicationController
   end
 
     def create
+        comment = Comment.find(params[:comment_id])
         @reply = Reply.new(post_params(:content))
         @reply.comment_id = params[:comment_id]
 
         if @reply.valid?
             @reply.save
-            redirect_to '/errands.1'
+            redirect_to "/errands/#{comment.errand_id}"
         else
             flash[:error] = @reply.errors.full_messages
             # redirect_to "/comments/#{@comment.id}/replies/new"
