@@ -8,5 +8,10 @@
   <% if @comment %>
     <p>Comment: <%= @comment.content %></p>
     <p>Rating: <%= @comment.rating %></p>
-    <%= link_to "Reply", :class => 'btn btn-info btn-block my-4' %>
+    <%= link_to "Reply", new_comment_reply_path(@comment), :class => 'btn btn-info btn-block my-4' %>
+    <% if @replies %>
+    <% @replies.each do |reply| %>
+    <p>Reply: <%= reply.content %></p>
+    <% end %>
+    <% end %>
   <% end %>
