@@ -5,9 +5,8 @@ class UsersController < ApplicationController
 		if authenticated
 			redirect_to @user
 		else
-			# @user.errors.any?
-			# byebug
-			render :login
+			flash[:error] = "Invalid User Name or Password"
+			redirect_to '/login'
 		end
 	end
 
@@ -19,12 +18,13 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(allowed_params)
+		@user = User.new(post_params(:user_name, :password, :first_name, :last_name))
 		if @user.valid?
 			@user.save
 			redirect_to '/login'
 		else
-			render :new
+			flash[:error] = @user.errors.full_messages
+			redirect_to '/users/new'
 		end
 	end
 
@@ -38,7 +38,9 @@ class UsersController < ApplicationController
        @user.save
        logout
 		else
-			render :edit
+			flash[:error] = @user.errors.full_messages
+			redirect_to "/users/#{@user.id}/edit"
+			# render :edit
 		end
 	end
 

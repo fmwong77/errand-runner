@@ -1,12 +1,14 @@
-<h1>Run An Errand</h1>
 <% if @errand %>
+
         <% @errand.each do |errand| %>
-            Category: <%= errand.category.category %><br>
+        <%= form_with model: errand, url:errand_pickup_path, class: :"text-center border border-light p-5" do |f| %>
+        <p class="h4 mb-4">Run An Errand</p>
+        Category: <%= errand.category.category %><br>
             Description: <%= errand.description %><br>
-            Due date: <%= errand.due_date %>
+            Due date: <%= errand.due_date %><br>
             Created by: <%= errand.user.first_name %> <%= errand.user.last_name %><br>
-            <%= form_with model: errand, url:errand_pickup_path do |f| %>
-            <%= f.submit "Run errand" %>
+            Credit: <%= errand.category.credit %><br>
+            <%= f.submit "Run Errand", :class => 'btn btn-info btn-block my-4' %>
             <% end %>
         <% end %>
 <% end %>
