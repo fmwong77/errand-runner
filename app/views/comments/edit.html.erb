@@ -1,0 +1,9 @@
+<%= flash[:error] %>
+ 
+ <%= form_with model: @comment, class: :"text-center border border-light p-5" do |f| %>
+ <p class="h4 mb-4">Edit Errand</p>
+ <%= f.text_area :content, class: :"form-control mb-4", placeholder: :"Comment" %>
+ <%= f.rating :rating, class: :"form-control mb-4", placeholder: :"Rating [0-5]" %>
+ <%= f.submit "Update", :class => 'btn btn-info btn-block my-4' %><br>
+
+   <% end %>
