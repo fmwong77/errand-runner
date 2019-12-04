@@ -11,4 +11,13 @@
     <p>Rating: <%= @comment.rating %></p>
     <p><%= link_to "View Replies", replies_path(@comment) %></p>
   </div>
+  <% if @comment.reply %>
+  <div class="text-center border border-light p-5">
+     <p>Reply: <%= @comment.reply.content %></p>
+  </div>
   <% end %>
+  <% end %>
+
+  
+  
+

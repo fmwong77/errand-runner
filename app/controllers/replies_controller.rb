@@ -26,7 +26,11 @@ class RepliesController < ApplicationController
 			flash[:error] = @reply.errors.full_messages
 			redirect_to "/replies/#{@reply.id}/edit"
 		end
-	end
+  end
+  
+  def show
+    
+  end
 
     private
     def find_by_id

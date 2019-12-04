@@ -33,8 +33,8 @@ class ErrandsController < ApplicationController
        @errand.save
        redirect_to '/errands.1'
     else
-      puts "oops!"
-      render :new
+      flash[:error] = @errand.errors.full_messages
+      redirect_to '/errands.1'
     end
 	end
 
@@ -47,8 +47,9 @@ class ErrandsController < ApplicationController
 		if @errand.valid?
 			 @errand.save
 			 redirect_to '/errands.1'
-		else
-			render :edit
+    else
+      flash[:error] = @errand.errors.full_messages
+			redirect_to errand_path
 		end
 	end
 
