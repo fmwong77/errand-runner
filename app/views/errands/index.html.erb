@@ -30,7 +30,7 @@
         <% elsif params[:format].to_i == 1 %>
         <td><%= link_to "Edit", edit_errand_path(errand) %> / <%= link_to "Delete", errand, method: :delete, data: { confirm: "Are you sure to delete this errand?" } %>
         <% elsif params[:format].to_i == 2 %>
-        <td><%= link_to "View", errand %></td>
+        <td><%= link_to "View", errand %> / <%= link_to "Comment", new_errand_comment_path(errand) %></td>
         <% end %>
       </tr>
       <% end %>

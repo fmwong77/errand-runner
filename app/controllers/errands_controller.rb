@@ -4,6 +4,7 @@ class ErrandsController < ApplicationController
 	before_action :find_by_id_for_pickup, only: [:editpickup]
 	
 	def index
+		# @comment = Comment.find_by("errand_id = #{params[:id]}")
 		case params[:format].to_i
 		when 0
 			@errands = Errand.where("user_id <> #{session[:current_user_id]} and runner_user_id isnull")#.joins(:category, :user).select('errands.*, categories.category, users.*')

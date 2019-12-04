@@ -5,3 +5,10 @@
    <p>Credit: <%= @errand.category.credit %></p>
   </div>
    
+  <% if @comment%>
+  <div class="text-center border border-light p-5">
+    <p>Comment: <%= @comment.content %></p>
+    <p>Rating: <%= @comment.rating %></p>
+    <p><%= link_to "View Replies", replies_path(@comment) %></p>
+  </div>
+  <% end %>
