@@ -13,6 +13,7 @@
         <th scope="col">Description</th>
         <th scope="col">Due Date</th>
         <th scope="col">Created by</th>
+        <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -24,6 +25,7 @@
         <td><%= errand.description %></td>
         <td><%= errand.due_date %></td>
         <td><%= errand.user.first_name %> <%= errand.user.last_name %></td>
+        <td><% if errand.runner_user_id %>Completed<% end %></td>
 
 
 

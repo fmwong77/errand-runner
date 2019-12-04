@@ -14,11 +14,10 @@ class ErrandsController < ApplicationController
 		else
 			@errands = Errand.where("user_id <> #{session[:current_user_id]} and runner_user_id isnull")#.joins(:category, :user).select('errands.*, categories.category, users.first_name, users.last_name')
 		end
-		# byebug
+		byebug
 	end
 
 	  def show
-		# byebug
 		@comment = Comment.find_by("errand_id = #{params[:id]}")
 	end
 
