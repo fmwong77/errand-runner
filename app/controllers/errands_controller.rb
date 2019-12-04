@@ -1,6 +1,6 @@
 class ErrandsController < ApplicationController
 
-	before_action :find_by_id, only: [:edit, :show]
+	before_action :find_by_id, only: [:show, :edit, :update]
 	before_action :find_by_id_for_pickup, only: [:editpickup]
 	
 	def index
@@ -17,22 +17,41 @@ class ErrandsController < ApplicationController
 		# byebug
 	end
 
-	  def show
-		@comment = Comment.find_by("errand_id = #{params[:id]}")
+	def show
+    @comment = Comment.find_by("errand_id = #{params[:id]}")
+    if @comment
+      @replies = Reply.all.where("comment_id = #{@comment.id}")
+    end
 	end
 
-  	def new
-    	@errand = Errand.new
+  def new
+    @errand = Errand.new
 	end
 
   def create
-    @errand = Errand.new(:category_id, :user_id, :runner_user_id, :description, :due_date)
-    @errand.save
-    redirect_to errands_path
+    @errand = Errand.new(post_params(:category_id, :user_id, :description, :due_date))
+    @errand.user_id = session[:current_user_id]
+    # byebug
+    if @errand.valid?
+       @errand.save
+       redirect_to '/errands.1'
+    else
+      render :new
+    end
 	end
 
 	def edit
 		
+  end
+  
+  def update
+		@errand.update(post_params(:category_id, :description, :due_date))
+		if @errand.valid?
+			 @errand.save
+			 redirect_to '/errands.1'
+		else
+			render :edit
+		end
 	end
 
 	def editpickup

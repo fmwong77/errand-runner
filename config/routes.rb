@@ -8,12 +8,20 @@ Rails.application.routes.draw do
     get '/pickup', to: 'errands#editpickup'
     patch '/pickup', to: 'errands#pickup'
 
-    resources :comments, only: [:new, :create]
+   resources :comments, only: [:new, :create]
+    
+  end 
+
+  resources :comments do
+    resources :replies, only: [:new, :create]
   end
+    
 
   # resources :replies, only: [:new, :create, :update, :edit]
 
   resources :users
-  resources :errands, only: [:index, :show, :new, :create, :update, :destroy, :edit]
+  resources :errands
   root to: 'static#welcome'
 end
+
+# , only: [:index, :show, :new, :create, :update, :destroy, :edit]
