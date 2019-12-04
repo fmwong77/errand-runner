@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
     def new
         @comment = Comment.new
         @errand = Errand.find(params[:errand_id])
-        # redirect_to 'errands//comments/new'
+        @user = User.find(@errand.user_id)
     end
 
     def create
