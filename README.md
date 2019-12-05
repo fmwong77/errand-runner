@@ -2,8 +2,6 @@
 
 #User Guidelines
 
-![Entity Relationship Diagram](errand-runner-erd.jpg)
-
 * As a user, I want to be able to login and create an errand. 
 * As a user, I want to be able to login and run others errand.
 * As a user, I want to be able to comment on the completed errand that I've posted. The errand runner is able to reply to my comment.
@@ -11,6 +9,8 @@
 * As a user, I want to be able to logout from the application.
 
 ### TECHNICAL OBJECTIVES
+
+![Entity Relationship Diagram](errand-runner-erd.jpg)
 
 1. This application accesses a Sqlite3 Database using ActiveRecord.
 2. This application has five models including one join model. See ER Diagram for more details.
