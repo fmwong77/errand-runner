@@ -11,8 +11,10 @@ class RepliesController < ApplicationController
         comment = Comment.find(params[:comment_id])
         @reply = Reply.new(post_params(:content))
         @reply.comment_id = params[:comment_id]
+        @user = User.find(session[:current_user_id])
 
         if @reply.valid?
+           @reply.content = "#{@user.first_name}: #{params[:reply][:content]}"
             @reply.save
             redirect_to "/errands/#{comment.errand_id}"
         else

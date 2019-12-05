@@ -6,21 +6,24 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.destroy_all 
-Category.destroy_all
-Errand.destroy_all
+# User.destroy_all 
+# Category.destroy_all
+# Errand.destroy_all
+# Reply.destroy_all
+# Comment.destroy_all
 
-mei = User.create(user_name: 'mei', password: '1', first_name: 'Mei', last_name: 'Wong')
-buford = User.create(user_name: 'buford', password: '1', first_name: 'Buford', last_name: 'Eeds')
+# mei = User.create(user_name: 'mei', password: '1', first_name: 'Mei', last_name: 'Wong')
+# buford = User.create(user_name: 'buford', password: '1', first_name: 'Buford', last_name: 'Eeds')
 
-yard_work = Category.create(category: 'Yard Work', credit: 25)
-furniture_assembly = Category.create(category: 'Furniture Assembly', credit: 25)
-heavy_lifting = Category.create(category: 'Heavy Lifting', credit: 20)
-general_cleaning = Category.create(category: 'Yard Work', credit: 30)
-wait_in_line = Category.create(category: 'Wait in Line', credit: 10)
-office_admin = Category.create(category: 'Office Administration', credit: 50)
-home_repair = Category.create(category: 'Home Repair', credit: 80)
-delivery_service = Category.create(category: 'Delivery Service', credit: 25)
+# yard_work = Category.create(category: 'Yard Work', credit: 25)
+# furniture_assembly = Category.create(category: 'Furniture Assembly', credit: 25)
+# heavy_lifting = Category.create(category: 'Heavy Lifting', credit: 20)
+# general_cleaning = Category.create(category: 'Yard Work', credit: 30)
+# wait_in_line = Category.create(category: 'Wait in Line', credit: 10)
+# office_admin = Category.create(category: 'Office Administration', credit: 50)
+# home_repair = Category.create(category: 'Home Repair', credit: 80)
+# delivery_service = Category.create(category: 'Delivery Service', credit: 25)
+
 
 e1 = Errand.create(user_id: mei.id, category_id: yard_work.id, description: 'Need lawn mowing service')
 e2 = Errand.create(user_id: mei.id, category_id: heavy_lifting.id, description: 'Declutter the house, need to move out the old sofa and fridge')
