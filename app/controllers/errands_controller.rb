@@ -1,3 +1,4 @@
+# require 'Date'
 class ErrandsController < ApplicationController
 
 	before_action :find_by_id, only: [:show, :edit, :update]
@@ -31,14 +32,17 @@ class ErrandsController < ApplicationController
 	end
 
   def create
-    @errand = Errand.new(post_params(:category_id, :user_id, :description, :due_date))
+	@errand = Errand.new(post_params(:category_id, :user_id, :description, :due_date))
+	if params[:errand][:due_date].size > 0
+		@errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
+	end
     @errand.user_id = session[:current_user_id]
     if @errand.valid?
        @errand.save
        redirect_to '/errands.1'
     else
 	  flash[:error] = @errand.errors.full_messages
-      render :new
+      redirect_to new_errand_path
     end
 end
 
@@ -49,12 +53,13 @@ end
   def update
 	# byebug
 		@errand.update(post_params(:category_id, :description, :due_date))
+		@errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
 		if @errand.valid?
 			 @errand.save
 			 redirect_to '/errands.1'
 		else
 			flash[:error] = @errand.errors.full_messages
-			render :edit
+			redirect_to "/errands/#{params[:id]}/edit"
 		end
 	end
 

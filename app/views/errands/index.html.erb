@@ -23,7 +23,7 @@
       <tr>
         <td><%= errand.category.category %></td>
         <td><%= errand.description %></td>
-        <td><%= errand.due_date %></td>
+        <td><% if errand.due_date%><%= errand.due_date.strftime("%m/%d/%Y") %><% end %></td>
         <td><%= errand.user.first_name %> <%= errand.user.last_name %></td>
 
         <% if errand.runner_user_id %>
@@ -33,16 +33,16 @@
         <% end %>
 
         <% if params[:format].to_i == 0 %>
-        <td><%= link_to "Pick up", errand_pickup_path(errand) %></td>
+        <td><%= link_to "Pick up", errand_pickup_path(errand), class: "btn btn-success btn-sm" %></td>
         <% elsif params[:format].to_i == 1 %>
-        <td><%= link_to "View", errand %> / <%= link_to "Edit", edit_errand_path(errand) %> / <%= link_to "Delete", errand, method: :delete, data: { confirm: "Are you sure to delete this errand?" } %> 
+        <td><%= link_to "View", errand, class: "btn btn-success btn-sm" %> <%= link_to "Edit", edit_errand_path(errand), class: "btn btn-warning btn-sm" %> <%= link_to "Delete", errand, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "Are you sure to delete this errand?" } %> 
           <% if errand.runner_user_id %>
             <% if !errand.comment %>
-            / <%= link_to "Comment", new_errand_comment_path(errand) %>
+            <%= link_to "Comment", new_errand_comment_path(errand), class: "btn btn-info btn-sm" %>
             <% end %>
           <% end %>
         <% elsif params[:format].to_i == 2 %>
-        <td><%= link_to "View", errand %></td>
+        <td><%= link_to "View", errand, class: "btn btn-success btn-sm" %></td>
         <% end %>
       </tr>
       <% end %>
