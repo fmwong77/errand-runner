@@ -5,7 +5,7 @@
 * As a user, I want to be able to login and create an errand. 
 * As a user, I want to be able to login and run others errand.
 * As a user, I want to be able to comment on the completed errand that I've posted. The errand runner is able to reply to my comment.
-* As a user, I want to be able to update my information.
+* As a user, I want to be able to update my information such as my first and last name and my password.
 * As a user, I want to be able to logout from the application.
 
 ### TECHNICAL OBJECTIVES
