@@ -1,24 +1,11 @@
-# README
+# Module Two Final Project: Errand Runner.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# User Guidelines
 
-Things you may want to cover:
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* As a user, I want to be able to enter my first name. 
+* As a user, I want to be able to update my dietary preference to either vegetarian or non-vegetarian.
+* As a user, I should be able to retrieve my last saved meal with the name, cost per serving, and ingredient list.
+* As a user, I want to be able to generate another random meal based on dietary preference. This will delete my old meal and 
+ save the meal I choose, then exit out of CLI application.
