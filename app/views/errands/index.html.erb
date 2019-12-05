@@ -1,5 +1,5 @@
 <h1><% if params[:format].to_i == 0 %>
-  Pick Up An Errand
+  Run Errand
   <% elsif params[:format].to_i == 1 %>
   My Errands
   <% elsif params[:format].to_i == 2 %>
@@ -27,13 +27,13 @@
         <td><%= errand.user.first_name %> <%= errand.user.last_name %></td>
 
         <% if errand.runner_user_id %>
-        <td>Completed</td>
+        <td><span class="badge badge-success">Completed</span></td>
         <% else %>
-        <td>Pending</td>
+        <td><span class="badge badge-warning">Pending</span></td>
         <% end %>
 
         <% if params[:format].to_i == 0 %>
-        <td><%= link_to "Pick up", errand_pickup_path(errand), class: "badge badge-pill badge-success" %></td>
+        <td><%= link_to "Run", errand_pickup_path(errand), class: "badge badge-pill badge-success" %></td>
         <% elsif params[:format].to_i == 1 %>
         <td><%= link_to "View", errand, class: "badge badge-pill badge-primary" %> <%= link_to "Edit", edit_errand_path(errand), class: "badge badge-pill badge-warning" %> <%= link_to "Delete", errand, class: "badge badge-pill badge-danger", method: :delete, data: { confirm: "Are you sure to delete this errand?" } %> 
           <% if errand.runner_user_id %>

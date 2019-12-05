@@ -4,7 +4,7 @@
     <style>
       .view {
         background-image: url("paper.gif");
-        background-color: #cccccc;
+        background-color: rgb(243,243,243);
     }
     html,
     body,
@@ -21,8 +21,8 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo">
-      <a class="navbar-brand" href="/"><strong>Errand Runner</strong></a>
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo" >
+      <a class="navbar-brand" style="color: #000000" href="/"><strong>Errand Runner</strong></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -31,24 +31,24 @@
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
             <% if session[:current_user_id] %>
-            <a class="nav-link" href="/errands">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" style="color: #000000" href="/errands">Home <span class="sr-only">(current)</span></a>
             <% else %>
-            <a class="nav-link" href="/login">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" style="color: #000000" href="/login">Home <span class="sr-only">(current)</span></a>
             <% end %>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/users/new">Register</a>
+            <a class="nav-link" style="color: #000000" href="/users/new">Register</a>
           </li>
           <li class="nav-item">
               <% if session[:current_user_id] %>
-            <a class="nav-link" href="/logout">Sign Out </a>
+            <a class="nav-link" style="color: #000000" href="/logout">Sign Out </a>
             <% else %>
-            <a class="nav-link" href="/login">Sign in</a>
+            <a class="nav-link" style="color: #000000" href="/login">Sign in</a>
             <% end %>
           </li>
           <% if session[:current_user_id] %>
           <li class="nav-item">
-              <a class="nav-link" href="/users/<%= session[:current_user_id]%>"><%= session[:current_user] %></a>
+              <a class="nav-link" style="color: #000000" href="/users/<%= session[:current_user_id]%>"><%= session[:current_user] %></a>
             </li>
             <% end %>
         </ul>
