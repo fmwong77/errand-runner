@@ -2,7 +2,7 @@
 
 # User Guidelines
 
-![Entity Relationship Diagram](Module-two-final-project-erd.pdf)
+![Entity Relationship Diagram](Module-two-final-project-erd.jpg)
 
 * As a user, I want to be able to enter my first name. 
 * As a user, I want to be able to update my dietary preference to either vegetarian or non-vegetarian.
