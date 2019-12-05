@@ -16,20 +16,12 @@
 2. This application has five models including one join model. See ER Diagram for more details.
 3. This application has five separate classes for the models.
 
-### SET UP FOR CLI APPLICATION 
+### Running the application 
   
-1.) Make sure Ruby is installed by opening your terminal and typing:
+1.) Download from this repository.
 
-ruby -v
+2.) Run bundle install to install all the gems required.
 
-2.) It should return this:
+3.) Run rails s to start your web server.
 
-ruby 2.6.1p33 (2019-01-30 revision 66950) [x86_64-darwin18] or higher
-
-If you don't have ruby installed, you'll have to get that up and running in your machine first. You can do that by going to the Official Ruby Language Downloads page and following the instructions to download and install ruby on your computer.
-
-3.) Download this repository.
-
-4.) Run rails s to start your web server.
-
-5.) Use URL localhost:3000 to view your application.
+4.) Use URL localhost:3000 to access your application.
