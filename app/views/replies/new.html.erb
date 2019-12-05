@@ -1,5 +1,5 @@
 <%= flash[:error] %>
-<%= form_for [@comment, @reply], class: :"text-center border border-light p-5" do |f| %>
+<%= form_for [@comment, @reply], :html => {class: :"text-center border border-light p-5"} do |f| %>
 <p class="h4 mb-4">New Reply</p>
          <%= f.text_area     :content, class: :"form-control mb-4", placeholder: :"Reply" %>
          <%= f.submit "Reply", :class => 'btn btn-info btn-block my-4' %><br>

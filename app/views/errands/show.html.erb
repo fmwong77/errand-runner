@@ -1,7 +1,7 @@
   <div class="text-center border border-light p-5">
    Created By: <%= @errand.user.first_name %> <%= @errand.user.last_name %><br>
    Description: <%= @errand.description %><br>
-   Due Date: <%= @errand.due_date %><br>
+   Due Date: <% if @errand.due_date %><%= @errand.due_date.strftime("%m/%d/%Y") %><% end %><br>
    Credit: <%= @errand.category.credit %>
   </div>
    
@@ -10,8 +10,10 @@
     <p>Rating: <%= @comment.rating %></p>
     <%= link_to "Reply", new_comment_reply_path(@comment), :class => 'btn btn-info btn-block my-4' %>
     <% if @replies %>
+    <ul>
     <% @replies.each do |reply| %>
-    <p>Reply: <%= reply.content %></p>
+    <li>Reply: <%= reply.content %></li>
     <% end %>
+    </ul>
     <% end %>
   <% end %>
