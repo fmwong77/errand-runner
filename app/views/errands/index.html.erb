@@ -33,16 +33,16 @@
         <% end %>
 
         <% if params[:format].to_i == 0 %>
-        <td><%= link_to "Pick up", errand_pickup_path(errand), class: "btn btn-success btn-sm" %></td>
+        <td><%= link_to "Pick up", errand_pickup_path(errand), class: "badge badge-pill badge-success" %></td>
         <% elsif params[:format].to_i == 1 %>
-        <td><%= link_to "View", errand, class: "btn btn-success btn-sm" %> <%= link_to "Edit", edit_errand_path(errand), class: "btn btn-warning btn-sm" %> <%= link_to "Delete", errand, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "Are you sure to delete this errand?" } %> 
+        <td><%= link_to "View", errand, class: "badge badge-pill badge-primary" %> <%= link_to "Edit", edit_errand_path(errand), class: "badge badge-pill badge-warning" %> <%= link_to "Delete", errand, class: "badge badge-pill badge-danger", method: :delete, data: { confirm: "Are you sure to delete this errand?" } %> 
           <% if errand.runner_user_id %>
             <% if !errand.comment %>
-            <%= link_to "Comment", new_errand_comment_path(errand), class: "btn btn-info btn-sm" %>
+            <%= link_to "Comment", new_errand_comment_path(errand), class: "badge badge-pill badge-info" %>
             <% end %>
           <% end %>
         <% elsif params[:format].to_i == 2 %>
-        <td><%= link_to "View", errand, class: "btn btn-success btn-sm" %></td>
+        <td><%= link_to "View", errand, class: "badge badge-pill badge-primary" %></td>
         <% end %>
       </tr>
       <% end %>
