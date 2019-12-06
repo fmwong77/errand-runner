@@ -18,35 +18,44 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(post_params(:user_name, :password, :first_name, :last_name))
-		if @user.valid?
-			@user.save
-			redirect_to '/login'
-		else
-			flash[:error] = @user.errors.full_messages
+    if params[:user][:password] != params[:user][:password_confirmation]
+			flash[:error] = "Password does not match"
 			redirect_to '/users/new'
-		end
+    else
+      @user = User.new(post_params(:user_name, :password, :first_name, :last_name))
+      if @user.valid?
+        @user.save
+        redirect_to '/login'
+      else
+        flash[:error] = @user.errors.full_messages
+        redirect_to '/users/new'
+      end
+    end
 	end
 
-	def edit
-
+  def edit
 	end
 
-	def update
-		@user.update(post_params(:first_name, :last_name, :password))
-		if @user.valid?
-       @user.save
-       logout
-		else
-			flash[:error] = @user.errors.full_messages
+  def update
+    
+		if params[:user][:password] != params[:user][:password_confirmation]
+			flash[:error] = "Password does not match"
 			redirect_to "/users/#{@user.id}/edit"
-			# render :edit
-		end
+    else
+      @user.update(post_params(:first_name, :last_name, :password))
+      if @user.valid?
+        @user.save
+        logout
+      else
+        flash[:error] = @user.errors.full_messages
+        redirect_to "/users/#{@user.id}/edit"
+      end
+    end
 	end
 
 	def logout
-		reset_session
-		redirect_to '/'
+    reset_session
+		redirect_to '/goodbye'
   end
   
   def full_name

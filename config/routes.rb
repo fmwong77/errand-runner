@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'login', to: 'static#login'
+  get 'goodbye', to: 'static#goodbye'
   get 'logout', to: 'users#logout'
   post 'login', to: 'users#index'
 

@@ -35,7 +35,7 @@
         <% if params[:format].to_i == 0 %>
         <td><%= link_to "Run", errand_pickup_path(errand), class: "badge badge-pill badge-success" %></td>
         <% elsif params[:format].to_i == 1 %>
-        <td><%= link_to "View", errand, class: "badge badge-pill badge-primary" %> <%= link_to "Edit", edit_errand_path(errand), class: "badge badge-pill badge-warning" %> <%= link_to "Delete", errand, class: "badge badge-pill badge-danger", method: :delete, data: { confirm: "Are you sure to delete this errand?" } %> 
+        <td><%= link_to "View", errand, class: "badge badge-pill badge-primary" %> <% if !errand.runner_user_id %> <%= link_to "Edit", edit_errand_path(errand), class: "badge badge-pill badge-warning" %> <% end %><%= link_to "Delete", errand, class: "badge badge-pill badge-danger", method: :delete, data: { confirm: "Are you sure to delete this errand?" } %> 
           <% if errand.runner_user_id %>
             <% if !errand.comment %>
             <%= link_to "Comment", new_errand_comment_path(errand), class: "badge badge-pill badge-info" %>
