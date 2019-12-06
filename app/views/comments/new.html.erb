@@ -3,7 +3,8 @@
 <p class="h4 mb-4">New Comment</p>
 <p>This errand was completed by: <%= @user.first_name%> <%= @user.last_name%></p>
          <%= f.text_area     :content, class: :"form-control mb-4", placeholder: :"Comment" %>
-         <%= f.select( :rating, (1..5), {:class => "form-control mb-4"} )%>
+         <%= f.select( :rating, (1..5), {}, {:class => "form-control mb-4"} )%>
          <%= f.submit "Comment", :class => 'btn btn-info btn-block my-4' %><br>
   <% end %>
+
   

@@ -29,38 +29,48 @@ class ErrandsController < ApplicationController
 
   	def new
     	@errand = Errand.new
-	end
+	  end
 
   def create
-	@errand = Errand.new(post_params(:category_id, :user_id, :description, :due_date))
-	if params[:errand][:due_date].size > 0
-		@errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
-	end
-    @errand.user_id = session[:current_user_id]
-    if @errand.valid?
-       @errand.save
-       redirect_to '/errands.1'
-    else
-	  flash[:error] = @errand.errors.full_messages
-      redirect_to new_errand_path
-    end
-end
+    # if is_valid_date
+      @errand = Errand.new(post_params(:category_id, :user_id, :description, :due_date))
+      # if params[:errand][:due_date].size > 0
+        @errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
+      # end
+        @errand.user_id = session[:current_user_id]
+        if @errand.valid?
+          @errand.save
+          redirect_to '/errands.1'
+        else
+        flash[:error] = @errand.errors.full_messages
+          redirect_to new_errand_path
+        end
+    # else
+    #   redirect_to new_errand_path
+    # end
+   end
 
 	def edit
 		
   end
   
   def update
-	# byebug
-		@errand.update(post_params(:category_id, :description, :due_date))
-		@errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
-		if @errand.valid?
-			 @errand.save
-			 redirect_to '/errands.1'
-		else
-			flash[:error] = @errand.errors.full_messages
-			redirect_to "/errands/#{params[:id]}/edit"
-		end
+  # byebug
+  # if is_valid_date
+  
+      @errand.update(post_params(:category_id, :description, :due_date))
+      @errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
+      if @errand.valid?
+        @errand.save
+        redirect_to '/errands.1'
+      else
+        flash[:error] = @errand.errors.full_messages
+        redirect_to "/errands/#{params[:id]}/edit"
+      end
+    # else
+    #   render :edit
+    #   # redirect_to "/errands/#{params[:id]}/edit"
+    # end
 	end
 
 	def editpickup
@@ -95,5 +105,19 @@ end
 
 	def post_params(*args)
 		params.require(:errand).permit(args)
+  end
+
+  def is_valid_date
+    is_valid = true
+    if ((Time.strptime(params[:errand][:due_date], "%m/%d/%Y") rescue ArgumentError) == ArgumentError) == true
+      flash[:error] = "Invalid due date"
+      is_valid = false
+    else
+      due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
+      if !due_date.future?
+        flash[:error] = "Due date cannot be in the past"
+        is_valid = false
+      end
+    end
   end
 end
