@@ -32,11 +32,9 @@ class ErrandsController < ApplicationController
 	  end
 
   def create
-    # if is_valid_date
+    if is_valid_date
       @errand = Errand.new(post_params(:category_id, :user_id, :description, :due_date))
-      # if params[:errand][:due_date].size > 0
         @errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
-      # end
         @errand.user_id = session[:current_user_id]
         if @errand.valid?
           @errand.save
@@ -45,9 +43,9 @@ class ErrandsController < ApplicationController
         flash[:error] = @errand.errors.full_messages
           redirect_to new_errand_path
         end
-    # else
-    #   redirect_to new_errand_path
-    # end
+    else
+      redirect_to new_errand_path
+    end
    end
 
 	def edit
@@ -55,9 +53,7 @@ class ErrandsController < ApplicationController
   end
   
   def update
-  # byebug
-  # if is_valid_date
-  
+  if is_valid_date
       @errand.update(post_params(:category_id, :description, :due_date))
       @errand.due_date = Time.strptime(params[:errand][:due_date], "%m/%d/%Y")
       if @errand.valid?
@@ -67,10 +63,9 @@ class ErrandsController < ApplicationController
         flash[:error] = @errand.errors.full_messages
         redirect_to "/errands/#{params[:id]}/edit"
       end
-    # else
-    #   render :edit
-    #   # redirect_to "/errands/#{params[:id]}/edit"
-    # end
+    else
+      redirect_to "/errands/#{params[:id]}/edit"
+    end
 	end
 
 	def editpickup
@@ -119,5 +114,6 @@ class ErrandsController < ApplicationController
         is_valid = false
       end
     end
+    is_valid
   end
 end
